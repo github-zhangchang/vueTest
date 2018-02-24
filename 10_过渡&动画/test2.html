@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>10_过渡&动画2</title>
+  <style>
+    .bounce-enter-active {
+      /*
+        0（隐藏） - 1.5（放大） - 1（正常）
+      */
+      animation: bounce-in .5s;
+    }
+    .bounce-leave-active {
+      /*
+        reverse 反向
+      */
+      animation: bounce-in .5s reverse;
+    }
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="example-2">
+  <button @click="show = !show">Toggle show</button>
+  <br>
+  <transition name="bounce">
+    <!--注意：默认使用块级元素样式实现，如果文本较少会造成效果溢出错觉，体验不好，修改为内联块元素-->
+    <p v-if="show" style="display: inline-block">Lorem ipsum dolor sit amet</p>
+  </transition>
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script>
+    new Vue({
+        el: '#example-2',
+        data: {
+            show: true
+        }
+    })
+</script>
+</body>
+</html>

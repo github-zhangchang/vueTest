@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>06_列表渲染</title>
+</head>
+<body>
+
+<!--
+1. 列表显示
+  数组: v-for / index
+  对象: v-for / key
+2. 列表的更新显示
+  删除item
+  替换item
+-->
+<!--
+  : 强制数据绑定格式
+-->
+<div id="demo">
+  <h2>测试: v-for 遍历数组</h2>
+  <ul>
+    <li v-for="(p, index) in persons" :key="index">
+      {{index}} -- {{p.name}} -- {{p.age}}
+      --  <button @click="deleteP(index)">删除</button>
+      --  <button @click="updateP(index, {name:'NBA', age:20})">更新</button>
+    </li>
+  </ul>
+
+  <h2>测试: v-for 遍历对象</h2>
+  <!--注意：数组中下标为数字，对象中下标为属性名-->
+  <!--注意：forEach 参数顺序：值、下标-->
+  <ul>
+    <li v-for="(value, key) in persons[1]" :key="key">
+      {{key}} = {{value}}
+    </li>
+  </ul>
+
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  new Vue({
+      el:'#demo',
+      data:{
+          persons:[
+              {name:'AAA', age:11},
+              {name:'BBB', age:12},
+              {name:'CCC', age:13}
+          ]
+      },
+      methods:{
+          deleteP(index){
+              //vue 变异方法，非原生方法
+              this.persons.splice(index, 1)
+          },
+          updateP(index, newP){
+              //this.persons[index] = newP
+              this.persons.splice(index, 1, newP)
+          }
+      }
+  })
+</script>
+</body>
+</html>

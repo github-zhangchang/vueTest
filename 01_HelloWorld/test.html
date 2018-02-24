@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_HelloWorld</title>
+</head>
+<body>
+
+<!--
+  两套组件主题
+  antd-mobile 移动端
+  antd        PC端
+-->
+
+<!--
+  1. 引入Vue.js
+  2. 创建Vue对象
+    el : 指定根element(选择器)
+    data : 初始化数据(页面可以访问)
+  3. 双向数据绑定 : v-model
+  4. 显示数据 : {{xxx}}
+  5. 理解vue的mvvm实现
+-->
+
+<div id="app">
+  <input type="text" v-model="username">
+  <input type="text" v-model="password">
+  <p>UserName： {{username}} - PassWord：{{password}}</p>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  /*
+  mvvm 模式
+    m   数据（model）
+    v   页面（view）
+    vm  管理数据的显示（viewModel - Vue的实例对象）
+  */
+  const vm = new Vue({
+      el:'#app',  //指定根element(选择器)
+      data:{      //初始化数据(页面可以访问)
+          username:'atguigu',
+          password:'123456'
+      }
+  })
+
+</script>
+</body>
+</html>
