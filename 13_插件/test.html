@@ -6,8 +6,30 @@
 </head>
 <body>
 
+<div id="app">
+  <!--使用自定义指令-->
+  <p v-my-directive="msg"></p>
+  <p v-text="msg"></p>
+</div>
+
 <script type="text/javascript" src="../js/vue.js"></script>
+<script src="../js/MyPlugin.js"></script>
 <script type="text/javascript">
+  //1.使用自定义插件
+  Vue.use(MyPlugin)
+
+  //2.创建实例
+  const vm = new Vue({
+      el:'#app',
+      data:{
+          msg:'Hello Atguigu'
+      }
+  })
+  //3.调用全局方法
+  Vue.myGlobalMethod()
+
+  //4.调用实例方法
+  vm.$myMethod()
 
 </script>
 </body>
